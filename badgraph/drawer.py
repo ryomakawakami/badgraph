@@ -5,7 +5,7 @@ from scipy.interpolate import make_interp_spline, BSpline
 SEGMENTS = 10
 ERROR_INV = 120
 
-class Line:
+class Drawer:
     # x and y are lengths of axes
     def __init__(self, x, y):
         self.x = x

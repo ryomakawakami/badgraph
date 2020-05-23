@@ -7,4 +7,4 @@ Todo:
 
 Bar y pos should match with x-axis y coord closest to the bar's endpoints.
 
-Better name for line class.
+To make both endpoints precise, make the error not accumulate.
