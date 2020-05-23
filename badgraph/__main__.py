@@ -1,12 +1,14 @@
 import matplotlib.pyplot as plt
 
-import badgraph.badart.line as line
+from badgraph.badart.line import Line
 
 if __name__ == '__main__':
-    xAxis = line.getHorizontal(0, 100, 0)
-    yAxis = line.getVertical(0, 100, 0)
+    line = Line(100, 100)
 
-    plt.plot(xAxis[0], xAxis[1], 'b')
-    plt.plot(yAxis[0], yAxis[1], 'b')
+    line.drawAxes()
+    line.drawBar(25, 0, 15, 30)
+    line.drawBar(50, 0, 15, 80)
+    line.drawBar(75, 0, 15, 60)
+
     plt.axis('off')
     plt.savefig('test.png', bbox_inches='tight', pad_inches=0)
