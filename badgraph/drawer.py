@@ -77,8 +77,8 @@ class Drawer:
         xAxis = self.getHorizontal(0, self.x, 0)
         yAxis = self.getVertical(0, self.y, 0)
 
-        plt.plot(xAxis[0], xAxis[1], 'b')
-        plt.plot(yAxis[0], yAxis[1], 'b')
+        plt.plot(xAxis[0], xAxis[1], 'k')
+        plt.plot(yAxis[0], yAxis[1], 'k')
 
     # (x, y) is bottom center of bar
     def drawBar(self, x, y, width, height):
@@ -88,6 +88,27 @@ class Drawer:
         endY = top[1][-1]
         right = self.getVertical(y, endY, endX + width, False)
 
-        plt.plot(left[0], left[1], 'b')
-        plt.plot(top[0], top[1], 'b')
-        plt.plot(right[0], right[1], 'b')
+        plt.plot(left[0], left[1], 'k')
+        plt.plot(top[0], top[1], 'k')
+        plt.plot(right[0], right[1], 'k')
+
+    # data is list of lists
+    # Each entry is label, value, and optional picture
+    # width is between 0 and 1
+    def visualize(self, data, width):
+        self.drawAxes()
+
+        hasPics = True
+        if len(data[0]) == 2:
+            hasPics = False
+
+        widthPer = self.x / (len(data) + 1)
+        for i, entry in enumerate(data):
+            x = widthPer * (i + 1)
+            self.drawBar(x, 0, widthPer * width, entry[1])
+
+            if hasPics:
+                pass
+            else:
+                plt.text(x, -7.5, entry[0], horizontalalignment='center')
+
